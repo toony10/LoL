@@ -302,7 +302,9 @@ export default function Home() {
                   <Image
                     width={0}
                     height={0}
-                    sizes='280px'
+                    sizes='(min-width: 640px) 50vw,
+              (min-width: 1024px) 25vw,
+             100vw"'
                     src={product.imageSrc}
                     alt={product.imageAlt}
                     className='h-full w-full object-cover object-center lg:h-full lg:w-full'
