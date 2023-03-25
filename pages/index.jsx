@@ -4,25 +4,28 @@ import styles from "@/styles/Home.module.css";
 import { useState } from "react";
 import { Dialog } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
-import { motion, AnimatePresence } from "framer-motion";
+// icons
+import { GiWoodenChair } from "react-icons/gi";
+import { MdOutlineTableBar } from "react-icons/md";
+import { AiOutlineHome } from "react-icons/ai";
 import {
   RiWhatsappFill,
   RiFacebookCircleFill,
   RiInstagramFill,
 } from "react-icons/ri";
-
+import { BiBed } from "react-icons/bi";
 const navigation = [
-  { name: "من نحن؟", href: "#about-us" },
-  { name: "منتجاتنا", href: "#products" },
-  { name: "موقعنا", href: "#location" },
-  { name: "تواصل معنا", href: "#contact" },
+  { name: "من نحن؟", href: "#about-us", id: 1 },
+  { name: "منتجاتنا", href: "#products", id: 2 },
+  { name: "موقعنا", href: "#location", id: 3 },
+  { name: "تواصل معنا", href: "#contact", id: 4 },
 ];
 
 const productTypes = [
-  { name: "كراسي" },
-  { name: "طاولات" },
-  { name: "سراير" },
-  { name: "الكل" },
+  { name: "كراسي", icon: <GiWoodenChair />, id: 1 },
+  { name: "طاولات", icon: <MdOutlineTableBar />, id: 2 },
+  { name: "سراير", icon: <BiBed />, id: 3 },
+  { name: "الكل", icon: <AiOutlineHome />, id: 4 },
 ];
 
 const products = [
@@ -37,7 +40,7 @@ const products = [
     color: "ابيض",
   },
   {
-    id: 1,
+    id: 2,
     name: "ليونيل أندريس ميسي",
     href: "#",
     imageSrc:
@@ -47,7 +50,7 @@ const products = [
     color: "ابيض",
   },
   {
-    id: 1,
+    id: 3,
     name: "ليونيل أندريس ميسي",
     href: "#",
     imageSrc:
@@ -57,7 +60,7 @@ const products = [
     color: "Black",
   },
   {
-    id: 1,
+    id: 4,
     name: "ليونيل أندريس ميسي",
     href: "#",
     imageSrc:
@@ -67,7 +70,7 @@ const products = [
     color: "Black",
   },
   {
-    id: 1,
+    id: 5,
     name: "ليونيل أندريس ميسي",
     href: "#",
     imageSrc:
@@ -77,7 +80,7 @@ const products = [
     color: "Black",
   },
   {
-    id: 1,
+    id: 6,
     name: "ليونيل أندريس ميسي",
     href: "#",
     imageSrc:
@@ -87,7 +90,7 @@ const products = [
     color: "Black",
   },
   {
-    id: 1,
+    id: 7,
     name: "ليونيل أندريس ميسي",
     href: "#",
     imageSrc:
@@ -97,7 +100,7 @@ const products = [
     color: "Black",
   },
   {
-    id: 1,
+    id: 8,
     name: "ليونيل أندريس ميسي",
     href: "#",
     imageSrc:
@@ -120,7 +123,9 @@ export default function Home() {
           aria-label='Global'>
           <div className='flex lg:flex-1 flex-row-reverse'>
             <a href='#' className='-m-1.5 p-1.5'>
-              <img
+              <Image
+                width={0}
+                height={0}
                 className='h-8 w-auto'
                 src='https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600'
                 alt=''
@@ -138,12 +143,12 @@ export default function Home() {
           </div>
           <div className='hidden lg:flex lg:gap-x-12  flex-row-reverse'>
             {navigation.map((item) => (
-              <motion.a
-                key={item.name}
+              <a
+                key={item.id}
                 href={item.href}
                 className='hover-underline-animation text-base font-semibold leading-6 text-gray-900 pb-1'>
                 {item.name}
-              </motion.a>
+              </a>
             ))}
           </div>
         </nav>
@@ -156,7 +161,9 @@ export default function Home() {
           <Dialog.Panel className='fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10'>
             <div className='flex items-center justify-between'>
               <a href='#' className='-m-1.5 p-1.5'>
-                <img
+                <Image
+                  width={0}
+                  height={0}
                   className='h-8 w-auto'
                   src='https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600'
                   alt=''
@@ -175,7 +182,7 @@ export default function Home() {
                 <div className='space-y-2 py-6'>
                   {navigation.map((item) => (
                     <a
-                      key={item.name}
+                      key={item.id}
                       href={item.href}
                       onClick={() => setMobileMenuOpen(false)}
                       className='-mx-3 block rounded-lg py-2 px-3 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50'>
@@ -242,12 +249,12 @@ export default function Home() {
         <div className='container m-auto px-6 text-gray-600 md:px-12 xl:px-6'>
           <div className='space-y-6 md:space-y-0 md:flex md:gap-6 lg:items-center lg:gap-12'>
             <div className='md:5/12 lg:w-5/12'>
-              <img
+              <Image
                 src='https://tailus.io/sources/blocks/left-image/preview/images/startup.png'
                 alt='image'
                 loading='lazy'
-                width=''
-                height=''
+                width={0}
+                height={0}
               />
             </div>
             <div className='md:7/12 lg:w-6/12'>
@@ -279,8 +286,11 @@ export default function Home() {
         </p>
         <div className='flex justify-center space-x-5 mt-7'>
           {productTypes.map((type) => (
-            <button class='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full '>
-              {type.name}
+            <button
+              key={type.id}
+              class='flex flex-row-reverse justify-between bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full '>
+              <div className='m-auto'>{type.icon}</div>
+              <div className='mx-2'>{type.name}</div>
             </button>
           ))}
         </div>
@@ -289,7 +299,10 @@ export default function Home() {
             {products.map((product) => (
               <div key={product.id} className='group relative'>
                 <div className='min-h-80 aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-md bg-gray-200 group-hover:opacity-75 lg:aspect-none lg:h-80'>
-                  <img
+                  <Image
+                    width={0}
+                    height={0}
+                    sizes='280px'
                     src={product.imageSrc}
                     alt={product.imageAlt}
                     className='h-full w-full object-cover object-center lg:h-full lg:w-full'
@@ -392,13 +405,13 @@ export default function Home() {
         </div>
         <div className='flex justify-center mb-7 space-x-8'>
           <a href='#' className='cursor-pointer'>
-            <RiWhatsappFill className='h-9 w-8 fill-green-700' />
+            <RiWhatsappFill className='h-9 w-8 fill-green-700 hover:w-12' />
           </a>
           <a href='#' className='cursor-pointer'>
-            <RiFacebookCircleFill className='h-9 w-8 fill-blue-700' />
+            <RiFacebookCircleFill className='h-9 w-8 fill-blue-700 hover:w-12' />
           </a>
           <a href='#' className='cursor-pointer'>
-            <RiInstagramFill className='h-9 w-8 fill-purple-700' />
+            <RiInstagramFill className='h-9 w-8 fill-purple-700 hover:w-12' />
           </a>
         </div>
       </section>
